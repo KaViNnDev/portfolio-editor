@@ -5,6 +5,7 @@ This the no code based Personal Portfolio builder, where you can add your necess
 ## Available Sections
 
 Since this application is based out of portfolio builder, we are allowing the following sections, where you can manage and add details in your application.
+
 - Hero,
 - About You,
 - Skillset,
@@ -17,10 +18,10 @@ Since this application is based out of portfolio builder, we are allowing the fo
 You can **Add** and **Edit** the sections in the application.
 
 We are supporting Rich Text Editor - [**Lexical**](https://lexical.dev/) to support the following features in the editor
+
 - Numeric and Bulleted lists
 - Headings
 - Hashtags
-
 
 ## Available Scripts
 
