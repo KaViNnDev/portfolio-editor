@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppenderFont } from './typograpies';
+import { BodyFont } from './typograpies';
 import AddIcon from '@mui/icons-material/Add';
 import { AppenderInnerFontVariant } from './types';
 
@@ -11,7 +11,7 @@ interface AppenderInnerFontProp {
 export const AppenderInnerFont: React.FC<AppenderInnerFontProp> = ({ label, variant }) => {
   const direction = variant === 'Horizontal' ? 'row' : 'column';
   return (
-    <AppenderFont
+    <BodyFont
       sx={{
         display: 'flex',
         flexDirection: direction,
@@ -21,6 +21,6 @@ export const AppenderInnerFont: React.FC<AppenderInnerFontProp> = ({ label, vari
       }}
     >
       <AddIcon /> {label}
-    </AppenderFont>
+    </BodyFont>
   );
 };
