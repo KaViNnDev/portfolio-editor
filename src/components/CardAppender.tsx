@@ -1,8 +1,9 @@
-import { ButtonBase, SxProps } from '@mui/material';
+import { ButtonBase, SxProps, useTheme } from '@mui/material';
 import React, { useCallback } from 'react';
 import { AppenderInnerFont } from './AppenderInnerFont';
 import { AppenderInnerFontVariant } from './types';
 import { ADD_NEXT_LABEL } from './strings';
+import { borderRadius } from '../Theme/theme';
 
 type CardSections = 'skillset' | 'project' | 'experience' | 'blog';
 interface CardAppenderProp {
@@ -15,9 +16,9 @@ const getBroderValue = (section: CardSections): string => {
     case 'skillset':
     case 'project':
     case 'blog':
-      return '25px';
+      return borderRadius.xl;
     case 'experience':
-      return '15px';
+      return borderRadius.sm;
   }
 };
 
@@ -47,18 +48,19 @@ const getSkeletonPaddingX = (section: CardSections): string => {
 };
 
 export const CardAppender: React.FC<CardAppenderProp> = ({ onClick, section }) => {
+  const { colors } = useTheme();
   const getStyles = useCallback((): SxProps => {
     const borderRadius = getBroderValue(section);
     const py = getSkeletonPaddingY(section);
     const px = getSkeletonPaddingX(section);
     return {
-      backgroundColor: '#EEEEEE',
-      border: '1px solid #DADADA',
+      backgroundColor: colors.lightGrey,
+      border: `1px solid ${colors.silver}`,
       borderRadius,
       py,
       px,
     };
-  }, [section]);
+  }, [colors.lightGrey, colors.silver, section]);
   const getInnerTextVariant = useCallback((): AppenderInnerFontVariant => {
     switch (section) {
       case 'skillset':
