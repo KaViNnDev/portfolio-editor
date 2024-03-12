@@ -1,23 +1,45 @@
 import React from 'react';
 import { ElevatedContainer } from './ElevatedContainer';
 import {
-  List,
+  List as MuiList,
   ListItemButton,
   ListItemButtonProps,
   ListItemIcon,
   ListItemIconProps,
   ListItemText,
+  ListProps,
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { BodyFont } from '../typograpies';
 import { AddCircleRounded } from '../../Icons/AddCircleRounded';
+import { sizing } from '../../Theme/types';
 
-const ListItem = styled(ListItemButton)<ListItemButtonProps>(({ theme }) => ({
-  borderRadius: theme.borderRadii.xs,
-  '&:hover': {
-    backgroungColor: theme.colors.veryLightGray,
-  },
-}));
+interface MenuListSize {
+  size: sizing;
+}
+
+const List = styled(MuiList)<ListProps & MenuListSize>(({ size }) => {
+  const paddingVertical = size === 'md' ? '26px' : '23px';
+  const paddingHorizontal = size === 'md' ? '15px' : '13px';
+  return {
+    padding: `${paddingVertical} ${paddingHorizontal}`,
+    boxSizing: 'border-box',
+    width: '100%',
+  };
+});
+
+const ListItem = styled(ListItemButton)<ListItemButtonProps & MenuListSize>(({ theme, size }) => {
+  const paddingVertical = size === 'md' ? '12px' : '10px';
+  const paddingHorizontal = size === 'md' ? '19px' : '22px';
+  return {
+    borderRadius: theme.borderRadii.xs,
+    '&:hover': {
+      backgroungColor: theme.colors.veryLightGray,
+    },
+    padding: `${paddingVertical} ${paddingHorizontal}`,
+    margin: '0px',
+  };
+});
 
 const ListIcon = styled(ListItemIcon)<ListItemIconProps>({
   width: '21px',
@@ -68,18 +90,23 @@ export const SectionList: React.FC<SectionListProp> = ({ isMenuList }) => {
       },
     },
   ];
+  const MenuSizeVariant: sizing = isMenuList ? 'sm' : 'md';
   return (
-    <ElevatedContainer size={isMenuList ? 'sm' : 'md'}>
-      <List>
-        {Sections.map(({ handleClick, label }) => {
+    <ElevatedContainer size={MenuSizeVariant}>
+      <List size={MenuSizeVariant}>
+        {Sections.map(({ handleClick, label }, index) => {
           return (
-            <ListItem onClick={handleClick}>
+            <ListItem
+              key={`${index}_${label}`}
+              onClick={handleClick}
+              size={MenuSizeVariant}
+            >
               {!isMenuList && (
                 <ListIcon>
                   <AddCircleRounded />
                 </ListIcon>
               )}
-              <ListItemText>
+              <ListItemText sx={{ margin: '0px' }}>
                 <BodyFont>{label}</BodyFont>
               </ListItemText>
             </ListItem>

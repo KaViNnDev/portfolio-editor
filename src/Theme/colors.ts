@@ -5,7 +5,9 @@ export const Colors: colors = {
   lightGrayish: '#D5D5D5',
   lightGrey: '#EEEEEE',
   silver: '#DADADA',
-  transparenntBlack: '#00000026',
+  transparentBlack: '#00000026',
   veryLightGray: '#EFEFEF',
   white: '#FFFFFF',
+  nearBlack: '#232323',
+  semiTransparentBlack: '#00000040',
 };

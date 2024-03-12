@@ -1,7 +1,7 @@
 import React from 'react';
-import { BodyFont } from './typograpies';
+import { BodyFont } from '../typograpies';
 import AddIcon from '@mui/icons-material/Add';
-import { AppenderInnerFontVariant } from './types';
+import { AppenderInnerFontVariant } from '../types';
 
 interface AppenderInnerFontProp {
   label: string;

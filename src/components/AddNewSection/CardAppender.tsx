@@ -1,9 +1,9 @@
 import { ButtonBase, SxProps, useTheme } from '@mui/material';
 import React, { useCallback } from 'react';
 import { AppenderInnerFont } from './AppenderInnerFont';
-import { AppenderInnerFontVariant } from './types';
+import { AppenderInnerFontVariant } from '../types';
 import { ADD_NEXT_LABEL } from './strings';
-import { borderRadius } from '../Theme/theme';
+import { borderRadius } from '../../Theme/theme';
 
 type CardSections = 'skillset' | 'project' | 'experience' | 'blog';
 interface CardAppenderProp {

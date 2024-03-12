@@ -4,8 +4,10 @@ export interface colors {
   black: string;
   veryLightGray: string;
   lightGrayish: string;
-  transparenntBlack: string;
+  transparentBlack: string;
   white: string;
+  nearBlack: string;
+  semiTransparentBlack: string;
 }
 
 export interface borderRadii {
