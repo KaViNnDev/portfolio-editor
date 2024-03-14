@@ -23,3 +23,13 @@ export const NavFont = styled(Typography)`
     color: ${Colors.white};
   }
 `;
+
+export const PlaceholderFont = styled(Typography)`
+  && {
+    font-family: Inter;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 30px;
+    color: ${Colors.black};
+  }
+`;

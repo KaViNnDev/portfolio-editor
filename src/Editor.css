@@ -1,0 +1,18 @@
+.editor-bold {
+  font-weight: bold;
+}
+.editor-italic {
+  font-style: italic;
+}
+
+.editor-underline {
+  text-decoration: underline;
+}
+
+.editor-hashtag {
+  background-color: #87837826;
+  color: #eb5757;
+  border-radius: 4px;
+  font-size: 85%;
+  padding: 0.2em 0.4em;
+}

@@ -2,7 +2,7 @@ import React from 'react';
 import AddIcon from '@mui/icons-material/Add';
 import { Box } from '@mui/material';
 
-export const AddCircleRounded: React.FC = () => {
+export const AddCircleRounded: React.FC<React.SVGProps<SVGSVGElement>> = () => {
   return (
     <Box
       sx={({ colors, borderRadii }) => ({

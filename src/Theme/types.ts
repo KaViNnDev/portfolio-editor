@@ -8,6 +8,8 @@ export interface colors {
   white: string;
   nearBlack: string;
   semiTransparentBlack: string;
+  platinumGray: string;
+  slateGray: string;
 }
 
 export interface borderRadii {
@@ -17,6 +19,8 @@ export interface borderRadii {
   md: string;
   lg: string;
   xl: string;
+  floatingMenuIcon: string;
+  floatingMenuWrapper: string;
 }
 
 export type sizing = 'md' | 'sm';

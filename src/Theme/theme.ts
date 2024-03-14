@@ -23,6 +23,8 @@ export const borderRadius: borderRadii = {
   lg: '20px',
   xl: '25px',
   full: '100%',
+  floatingMenuIcon: '4px',
+  floatingMenuWrapper: '8px',
 };
 
 export const theme = createTheme({
