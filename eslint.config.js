@@ -3,7 +3,6 @@ import tseslint from 'typescript-eslint';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import prettierConfig from 'eslint-config-prettier';
-import hooksPlugin from 'eslint-plugin-react-hooks';
 
 const filename = fileURLToPath(import.meta.url);
 
@@ -15,7 +14,6 @@ export default tseslint.config(
   ...tseslint.configs.recommendedTypeChecked,
   ...tseslint.configs.stylisticTypeChecked,
   prettierConfig,
-  hooksPlugin,
   {
     languageOptions: {
       parserOptions: {

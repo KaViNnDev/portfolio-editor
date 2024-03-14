@@ -70,7 +70,7 @@ export function FloatingMenuPlugin() {
     }
     // Adding show to the dependency array causes an issue if
     // a range selection is dismissed by navigating via arrow keys.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line
   }, [isPointerReleased, $handleSelectionChange, editor]);
 
   return createPortal(
