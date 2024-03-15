@@ -108,7 +108,7 @@ export const theme = createTheme({
       HeroName: {
         style: {
           fontWeight: '600',
-          fontSize: '600px',
+          fontSize: '16px',
           lineHeight: '19.36px',
         },
         color: {
