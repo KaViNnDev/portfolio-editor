@@ -13,4 +13,11 @@ export const Colors: colors = {
   platinumGray: '#E1E1E1',
   slateGray: '#87837826',
   silverGray: '#AEAEAE',
+  lightSilver: '#C6C6C6',
+  mediumGray: '#AAAAAA',
+  warmGray: '#9A9A9A',
+  charcoalGray: '#2E2E2E',
+  ashGray: '#858585',
+  electricBlue: '#0085FF',
+  steelGray: '#999999',
 };

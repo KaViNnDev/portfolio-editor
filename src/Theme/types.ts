@@ -1,3 +1,5 @@
+import { CSSProperties } from 'react';
+
 export interface colors {
   lightGrey: string;
   silver: string;
@@ -11,6 +13,13 @@ export interface colors {
   platinumGray: string;
   slateGray: string;
   silverGray: string;
+  lightSilver: string;
+  mediumGray: string;
+  warmGray: string;
+  charcoalGray: string;
+  ashGray: string;
+  electricBlue: string;
+  steelGray: string;
 }
 
 export interface borderRadii {
@@ -37,3 +46,38 @@ interface ImageUploaderBoxProperties {
 }
 
 export type ImageUploaderWidth = Record<ImageUploadeVariants, ImageUploaderBoxProperties>;
+
+export type EditableContentVariants =
+  | 'Title'
+  | 'SubTitle'
+  | 'HeroName'
+  | 'HeroEmail'
+  | 'SkillSetTitle'
+  | 'SkillSetDescription'
+  | 'SectionTitle'
+  | 'SectionSubText'
+  | 'ProjectTitle'
+  | 'Link'
+  | 'ProjectDescription'
+  | 'CompanyTitle'
+  | 'CompanyDesignation'
+  | 'CompanyLocation'
+  | 'CompanyTimeLine'
+  | 'CompanyExperience'
+  | 'BlogTitle'
+  | 'ConnectLink';
+
+export type EditableLinkVariants = Extract<EditableContentVariants, 'Link' | 'ConnectLink'>;
+export type EditableTextNodeVariants = Exclude<EditableContentVariants, EditableLinkVariants>;
+
+interface EditableTypographiesStyle {
+  style: CSSProperties;
+  color: {
+    Placeholder: keyof colors;
+    Text: keyof colors;
+  };
+}
+
+export type EditableTextTypographies = Record<EditableTextNodeVariants, EditableTypographiesStyle>;
+
+export type EditableLinkTypographies = Record<EditableLinkVariants, EditableTypographiesStyle>;
