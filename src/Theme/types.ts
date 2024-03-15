@@ -10,6 +10,7 @@ export interface colors {
   semiTransparentBlack: string;
   platinumGray: string;
   slateGray: string;
+  silverGray: string;
 }
 
 export interface borderRadii {
@@ -21,8 +22,18 @@ export interface borderRadii {
   xl: string;
   floatingMenuIcon: string;
   floatingMenuWrapper: string;
+  imageUploader: Record<ImageUploadeVariants, string>;
 }
 
 export type sizing = 'md' | 'sm';
 
 export type SectionsListWidth = Record<sizing, string>;
+
+export type ImageUploadeVariants = 'sm' | 'md' | 'lg';
+
+interface ImageUploaderBoxProperties {
+  box: string;
+  placeholder: string;
+}
+
+export type ImageUploaderWidth = Record<ImageUploadeVariants, ImageUploaderBoxProperties>;

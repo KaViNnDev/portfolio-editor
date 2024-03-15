@@ -1,5 +1,6 @@
 import { AddCircleRounded } from './AddCircleRounded';
 import { BoldIcon } from './BoldIcon';
+import { ImageIcon } from './ImageIcon';
 import { ItalicIcon } from './ItalicIcon';
 import { OrderedListIcon } from './OrderedListIcon';
 import { UnOrderedListIcon } from './UnOrderedListIcon';
@@ -19,6 +20,8 @@ const getElement = (variant: IconVariants) => {
       return OrderedListIcon;
     case 'UnOrderedList':
       return UnOrderedListIcon;
+    case 'ImagePlaceholder':
+      return ImageIcon;
   }
 };
 

@@ -12,4 +12,5 @@ export const Colors: colors = {
   semiTransparentBlack: '#00000040',
   platinumGray: '#E1E1E1',
   slateGray: '#87837826',
+  silverGray: '#AEAEAE',
 };

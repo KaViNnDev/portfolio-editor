@@ -1,11 +1,7 @@
 import React from 'react';
+import { SvgProp } from './types';
 
-export const BoldIcon: React.FC<React.SVGProps<SVGSVGElement>> = ({
-  onClick,
-  width,
-  height,
-  fill,
-}) => {
+export const BoldIcon: React.FC<SvgProp> = ({ onClick, width, height, fill }) => {
   return (
     <svg
       width={width ?? '9'}

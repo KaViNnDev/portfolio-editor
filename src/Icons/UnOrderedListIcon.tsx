@@ -1,11 +1,7 @@
 import React from 'react';
+import { SvgProp } from './types';
 
-export const UnOrderedListIcon: React.FC<React.SVGProps<SVGSVGElement>> = ({
-  width,
-  height,
-  fill,
-  onClick,
-}) => {
+export const UnOrderedListIcon: React.FC<SvgProp> = ({ width, height, fill, onClick }) => {
   return (
     <svg
       width={width ?? '15'}

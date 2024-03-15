@@ -1,11 +1,7 @@
 import React from 'react';
+import { SvgProp } from './types';
 
-export const ItalicIcon: React.FC<React.SVGProps<SVGSVGElement>> = ({
-  width,
-  height,
-  fill,
-  onClick,
-}) => {
+export const ItalicIcon: React.FC<SvgProp> = ({ width, height, fill, onClick }) => {
   return (
     <svg
       width={width ?? '4'}

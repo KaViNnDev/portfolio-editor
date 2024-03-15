@@ -1,11 +1,7 @@
 import React from 'react';
+import { SvgProp } from './types';
 
-export const UnderLineIcon: React.FC<React.SVGProps<SVGSVGElement>> = ({
-  width,
-  height,
-  fill,
-  onClick,
-}) => {
+export const UnderLineIcon: React.FC<SvgProp> = ({ width, height, fill, onClick }) => {
   return (
     <svg
       width={width ?? '11'}
