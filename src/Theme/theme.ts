@@ -3,6 +3,7 @@ import { Colors } from './colors';
 import {
   EditableLinkTypographies,
   EditableTextTypographies,
+  EditableTypographies,
   ImageUploaderWidth,
   SectionsListWidth,
   borderRadii,
@@ -26,10 +27,7 @@ declare module '@mui/material/styles' {
     borderRadii: borderRadii;
     MenuListBreakPoint: SectionsListWidth;
     ImageUploaderBreakPoints: ImageUploaderWidth;
-    EditableTypographies: {
-      Text: EditableTextTypographies;
-      Link: EditableLinkTypographies;
-    };
+    EditableTypographies: EditableTypographies;
   }
 }
 

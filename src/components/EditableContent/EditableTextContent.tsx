@@ -12,24 +12,14 @@ export const EditableTextContent: React.FC<EditableContentProps> = ({ isEditable
   return (
     <Box
       component={'div'}
-      sx={({ EditableTypographies }) => {
-        const placeHolderStyle = EditableTypographies.Text[variant].style;
-        const placeholderColorKey = EditableTypographies.Text[variant].color.Placeholder;
-        const styles = WrapperSxHandler({ style: placeHolderStyle, colorKey: placeholderColorKey });
-        return {
-          ...styles,
-        };
-      }}
+      sx={({ EditableTypographies: { Text } }) => ({
+        ...WrapperSxHandler(Text),
+      })}
     >
       <Box
-        sx={({ EditableTypographies }) => {
-          const contentStyle = EditableTypographies.Text[variant].style;
-          const contentColorKey = EditableTypographies.Text[variant].color.Text;
-          const styles = EditableSxHandler({ style: contentStyle, colorKey: contentColorKey });
-          return {
-            ...styles,
-          };
-        }}
+        sx={({ EditableTypographies: { Text } }) => ({
+          ...EditableSxHandler(Text),
+        })}
         component={'div'}
         contentEditable={isEditable}
         ref={elementRef}

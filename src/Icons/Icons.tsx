@@ -2,6 +2,8 @@ import { AddCircleRounded } from './AddCircleRounded';
 import { BoldIcon } from './BoldIcon';
 import { ImageIcon } from './ImageIcon';
 import { ItalicIcon } from './ItalicIcon';
+import { LinkIcon } from './LinkIcon';
+import { NewtabIcon } from './NewtabIcon';
 import { OrderedListIcon } from './OrderedListIcon';
 import { UnOrderedListIcon } from './UnOrderedListIcon';
 import { UnderLineIcon } from './UnderLineIcon';
@@ -22,6 +24,10 @@ const getElement = (variant: IconVariants) => {
       return UnOrderedListIcon;
     case 'ImagePlaceholder':
       return ImageIcon;
+    case 'Link':
+      return LinkIcon;
+    case 'NewTab':
+      return NewtabIcon;
   }
 };
 

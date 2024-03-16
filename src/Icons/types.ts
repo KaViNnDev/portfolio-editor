@@ -7,7 +7,9 @@ export type IconVariants =
   | 'OrderedList'
   | 'UnOrderedList'
   | 'UnderLine'
-  | 'ImagePlaceholder';
+  | 'ImagePlaceholder'
+  | 'Link'
+  | 'NewTab';
 
 export interface IconProp extends SvgProp {
   variant: IconVariants;

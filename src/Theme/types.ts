@@ -81,3 +81,8 @@ interface EditableTypographiesStyle {
 export type EditableTextTypographies = Record<EditableTextNodeVariants, EditableTypographiesStyle>;
 
 export type EditableLinkTypographies = Record<EditableLinkVariants, EditableTypographiesStyle>;
+
+export interface EditableTypographies {
+  Text: EditableTextTypographies;
+  Link: EditableLinkTypographies;
+}

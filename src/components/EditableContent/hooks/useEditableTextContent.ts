@@ -1,23 +1,14 @@
 import { SxProps, Theme } from '@mui/material';
-import React, { CSSProperties, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { EDITABLE_TEXT_NODE_PLACEHOLDERS } from '../strings';
-import { EditableTextNodeVariants, colors } from '../../../Theme/types';
+import { EditableTextNodeVariants, EditableTextTypographies } from '../../../Theme/types';
 import { Colors } from '../../../Theme/colors';
-
-interface WrapperSxProps {
-  style: CSSProperties;
-  colorKey: keyof colors;
-}
-interface contentSxProps {
-  style: CSSProperties;
-  colorKey: keyof colors;
-}
 
 interface UseEditableTextContent {
   elementRef: React.RefObject<HTMLDivElement>;
   changeHandler: (_event: React.ChangeEvent<HTMLDivElement>) => void;
-  WrapperSxHandler: (_props: WrapperSxProps) => SxProps<Theme>;
-  EditableSxHandler: (_props: contentSxProps) => SxProps<Theme>;
+  WrapperSxHandler: (_props: EditableTextTypographies) => SxProps<Theme>;
+  EditableSxHandler: (_props: EditableTextTypographies) => SxProps<Theme>;
 }
 
 export const useEditableTextContent = (
@@ -34,7 +25,9 @@ export const useEditableTextContent = (
     const isContentExceeds = scrollWidth > clientWidth;
     setIsContentExceedsWidth(isContentExceeds);
   };
-  const WrapperSxHandler = ({ style, colorKey }: WrapperSxProps): SxProps<Theme> => {
+  const WrapperSxHandler = (typographyTheme: EditableTextTypographies): SxProps<Theme> => {
+    const style = typographyTheme[variant].style;
+    const colorKey = typographyTheme[variant].color.Placeholder;
     return {
       width: '100%',
       overflowX: isContentExceedsWidth ? 'scroll' : 'hidden',
@@ -54,10 +47,14 @@ export const useEditableTextContent = (
       },
     };
   };
-  const EditableSxHandler = ({ colorKey, style }: contentSxProps): SxProps<Theme> => ({
-    ...style,
-    color: Colors[colorKey],
-  });
+  const EditableSxHandler = (typographyTheme: EditableTextTypographies): SxProps<Theme> => {
+    const style = typographyTheme[variant].style;
+    const colorKey = typographyTheme[variant].color.Text;
+    return {
+      ...style,
+      color: Colors[colorKey],
+    };
+  };
   return {
     changeHandler,
     EditableSxHandler,
