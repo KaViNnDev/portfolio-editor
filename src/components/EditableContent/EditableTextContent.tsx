@@ -2,11 +2,14 @@ import { Box } from '@mui/material';
 import React from 'react';
 import { EditableTextNodeVariants } from '../../Theme/types';
 import { useEditableTextContent } from './hooks/useEditableTextContent';
-interface EditableContentProps {
+interface EditableTextContentProps {
   isEditable: boolean;
   variant: EditableTextNodeVariants;
 }
-export const EditableTextContent: React.FC<EditableContentProps> = ({ isEditable, variant }) => {
+export const EditableTextContent: React.FC<EditableTextContentProps> = ({
+  isEditable,
+  variant,
+}) => {
   const { EditableSxHandler, WrapperSxHandler, changeHandler, elementRef } =
     useEditableTextContent(variant);
   return (
