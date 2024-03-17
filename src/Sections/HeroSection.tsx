@@ -18,12 +18,10 @@ export const HeroSection: React.FC = () => {
           <EditableTextContent
             isEditable
             variant="HeroName"
-            onChange={() => {}}
           />
           <EditableTextContent
             isEditable
             variant="HeroEmail"
-            onChange={() => {}}
           />
         </Box>
       </Box>
