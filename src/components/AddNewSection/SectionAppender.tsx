@@ -1,17 +1,21 @@
-import { Box, ButtonBase } from '@mui/material';
+import { Box, ButtonBase, SxProps } from '@mui/material';
 import React from 'react';
 import { CLICK_TO_ADD_SECTION_LABLE } from './strings';
 import { AppenderInnerFont } from './AppenderInnerFont';
 
 interface SectionAppenderProps {
   isInitialSection: boolean;
-  onClick: () => void;
+  onClick?: () => void;
+  wrapperStyle?: SxProps;
 }
 
-export const SectionAppender: React.FC<SectionAppenderProps> = ({ isInitialSection, onClick }) => {
-  const Wrapper = isInitialSection ? Box : React.Fragment;
+export const SectionAppender: React.FC<SectionAppenderProps> = ({
+  isInitialSection,
+  onClick,
+  wrapperStyle,
+}) => {
   return (
-    <Wrapper sx={{ px: '76px' }}>
+    <Box sx={{ ...(!isInitialSection ? { px: '76px' } : {}), ...wrapperStyle }}>
       <ButtonBase
         onClick={onClick}
         sx={({ colors, borderRadii }) => ({
@@ -29,6 +33,6 @@ export const SectionAppender: React.FC<SectionAppenderProps> = ({ isInitialSecti
           variant="Horizontal"
         />
       </ButtonBase>
-    </Wrapper>
+    </Box>
   );
 };

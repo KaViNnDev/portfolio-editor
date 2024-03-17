@@ -4,6 +4,11 @@ import { EDITABLE_TEXT_NODE_PLACEHOLDERS } from '../strings';
 import { EditableTextNodeVariants, EditableTextTypographies } from '../../../Theme/types';
 import { Colors } from '../../../Theme/colors';
 
+interface useEditableTextContentProp {
+  variant: EditableTextNodeVariants;
+  onChange?: (val: string) => void;
+}
+
 interface UseEditableTextContent {
   elementRef: React.RefObject<HTMLDivElement>;
   changeHandler: (_event: React.ChangeEvent<HTMLDivElement>) => void;
@@ -11,16 +16,19 @@ interface UseEditableTextContent {
   EditableSxHandler: (_props: EditableTextTypographies) => SxProps<Theme>;
 }
 
-export const useEditableTextContent = (
-  variant: EditableTextNodeVariants
-): UseEditableTextContent => {
+export const useEditableTextContent = ({
+  variant,
+  onChange,
+}: useEditableTextContentProp): UseEditableTextContent => {
   const [isContentExceedsWidth, setIsContentExceedsWidth] = useState<boolean>(false);
   const contentElement = useRef<HTMLDivElement>(null);
 
   //eslint-disable-next-line
-  const changeHandler = (_event: React.ChangeEvent<HTMLDivElement>): void => {
+  const changeHandler = (_event: React.FormEvent<HTMLDivElement>): void => {
     const scrollWidth = contentElement.current?.scrollWidth;
     const clientWidth = contentElement.current?.clientWidth;
+    const textValue = contentElement.current?.innerText;
+    if (onChange !== undefined) onChange(textValue ?? '');
     if (scrollWidth === undefined || clientWidth === undefined) return;
     const isContentExceeds = scrollWidth > clientWidth;
     setIsContentExceedsWidth(isContentExceeds);
@@ -38,6 +46,7 @@ export const useEditableTextContent = (
         content: `"${EDITABLE_TEXT_NODE_PLACEHOLDERS[variant]}"`,
         ...style,
         color: Colors[colorKey],
+        ...(variant === 'SiteTitle' ? { fontWeight: '500' } : {}),
       },
       '& > div': {
         margin: '0px',
@@ -53,6 +62,7 @@ export const useEditableTextContent = (
     return {
       ...style,
       color: Colors[colorKey],
+      ...(variant === 'SiteTitle' ? { fontWeight: '600' } : {}),
     };
   };
   return {

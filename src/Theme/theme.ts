@@ -80,6 +80,15 @@ export const theme = createTheme({
   },
   EditableTypographies: {
     Text: {
+      SiteTitle: {
+        style: {
+          fontSize: '16px',
+        },
+        color: {
+          Placeholder: 'softGray',
+          Text: 'black',
+        },
+      },
       Title: {
         style: {
           fontWeight: '500',

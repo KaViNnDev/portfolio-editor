@@ -10,11 +10,14 @@ export const NavBar: React.FC = () => {
   return (
     <Box
       component={'nav'}
-      sx={({ colors }) => ({
+      sx={({ colors, zIndex }) => ({
         py: '12px',
         backgroundColor: colors.nearBlack,
         width: '100%',
         boxShadow: `0px 6px 25px 0px ${colors.semiTransparentBlack}`,
+        position: 'sticky',
+        top: 0,
+        zIndex: zIndex.appBar,
       })}
     >
       <NavStack

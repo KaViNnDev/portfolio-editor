@@ -1,17 +1,17 @@
 import { Box, useTheme } from '@mui/material';
 import { ImageUploadeVariants } from '../../Theme/types';
 import { Icons } from '../../Icons/Icons';
-import { IMAGE_UPLOADER_ID } from '../contants';
 
 interface ImagePlaceholderProps {
   variant: ImageUploadeVariants;
+  formId: string;
 }
 
-export const ImagePlaceholder: React.FC<ImagePlaceholderProps> = ({ variant }) => {
+export const ImagePlaceholder: React.FC<ImagePlaceholderProps> = ({ variant, formId }) => {
   const { ImageUploaderBreakPoints } = useTheme();
   return (
     <label
-      htmlFor={IMAGE_UPLOADER_ID}
+      htmlFor={formId}
       style={{ width: '100%', height: '100%' }}
     >
       <Box

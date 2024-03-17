@@ -1,15 +1,15 @@
 import { Box } from '@mui/material';
-import React from 'react';
+import React, { useId } from 'react';
 import { ImageUploadeVariants } from '../../Theme/types';
 import { ImagePlaceholder } from './ImagePlaceholder';
 import { useImageUploader } from './useImageUploader';
-import { IMAGE_UPLOADER_ID } from '../contants';
 
 interface ImageUploaderProps {
   variant: ImageUploadeVariants;
 }
 
 export const ImageUploader: React.FC<ImageUploaderProps> = ({ variant }) => {
+  const formId = useId();
   const { handleUpload, image } = useImageUploader();
   return (
     <>
@@ -22,7 +22,7 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({ variant }) => {
           style={{
             display: 'none',
           }}
-          id={IMAGE_UPLOADER_ID}
+          id={formId}
         />
       )}
       <Box
@@ -44,7 +44,10 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({ variant }) => {
             style={{ width: '100%', height: '100%' }}
           />
         ) : (
-          <ImagePlaceholder variant={variant} />
+          <ImagePlaceholder
+            variant={variant}
+            formId={formId}
+          />
         )}
       </Box>
     </>

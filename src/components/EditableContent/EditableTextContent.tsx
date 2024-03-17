@@ -5,13 +5,16 @@ import { useEditableTextContent } from './hooks/useEditableTextContent';
 interface EditableTextContentProps {
   isEditable: boolean;
   variant: EditableTextNodeVariants;
+  onChange?: (val: string) => void;
 }
 export const EditableTextContent: React.FC<EditableTextContentProps> = ({
   isEditable,
   variant,
+  onChange,
 }) => {
-  const { EditableSxHandler, WrapperSxHandler, changeHandler, elementRef } =
-    useEditableTextContent(variant);
+  const { EditableSxHandler, WrapperSxHandler, changeHandler, elementRef } = useEditableTextContent(
+    { variant, onChange }
+  );
   return (
     <Box
       component={'div'}

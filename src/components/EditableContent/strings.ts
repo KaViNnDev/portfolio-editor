@@ -1,6 +1,7 @@
 import { EditableLinkVariants, EditableTextNodeVariants } from '../../Theme/types';
 
 export const EDITABLE_TEXT_NODE_PLACEHOLDERS: Readonly<Record<EditableTextNodeVariants, string>> = {
+  SiteTitle: 'Enter site title',
   Title: 'Click to add title',
   SubTitle: 'Click to add subtitle',
   HeroName: 'Your name here',

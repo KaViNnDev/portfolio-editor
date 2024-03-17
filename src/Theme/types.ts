@@ -20,6 +20,7 @@ export interface colors {
   ashGray: string;
   electricBlue: string;
   steelGray: string;
+  softGray: string;
 }
 
 export interface borderRadii {
@@ -48,6 +49,7 @@ interface ImageUploaderBoxProperties {
 export type ImageUploaderWidth = Record<ImageUploadeVariants, ImageUploaderBoxProperties>;
 
 export type EditableContentVariants =
+  | 'SiteTitle'
   | 'Title'
   | 'SubTitle'
   | 'HeroName'
