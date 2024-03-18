@@ -57,6 +57,13 @@ export const theme = createTheme({
         },
       },
     },
+    MuiButtonBase: {
+      styleOverrides: {
+        root: ({ ownerState }) => ({
+          ...(ownerState.disabled === true ? { opacity: '0.6' } : {}),
+        }),
+      },
+    },
   },
   colors: Colors,
   borderRadii: borderRadius,

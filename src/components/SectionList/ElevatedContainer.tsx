@@ -14,7 +14,7 @@ export const ElevatedContainer: React.FC<ElevatedContainerProps> = ({ children, 
         border: `1px solid ${colors.lightGrayish}`,
         boxShadow: `0px 6px 25px 0px ${colors.transparentBlack}`,
         backgroundColor: colors.white,
-        maxWidth: MenuListBreakPoint[size],
+        width: MenuListBreakPoint[size],
         boxSizing: 'border-box',
       })}
     >

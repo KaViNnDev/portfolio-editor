@@ -13,6 +13,8 @@ import { styled } from '@mui/material/styles';
 import { BodyFont } from '../typograpies';
 import { AddCircleRounded } from '../../Icons/AddCircleRounded';
 import { sizing } from '../../Theme/types';
+import { useDispatch, useSelector } from '../../Store/helper';
+import { addSection, selectFilteredActions, selectSections } from '../../Store/sectionsSlice';
 
 interface MenuListSize {
   size: sizing;
@@ -48,53 +50,23 @@ const ListIcon = styled(ListItemIcon)<ListItemIconProps>({
   minWidth: 'initial',
 });
 
-interface SectionsType {
-  label: string;
-  handleClick: () => void;
-}
-
 interface SectionListProp {
   isMenuList: boolean;
+  handleClose: () => void;
 }
 
-export const SectionList: React.FC<SectionListProp> = ({ isMenuList }) => {
-  const Sections: SectionsType[] = [
-    {
-      label: '📌  Add About you',
-      handleClick: () => {
-        console.log('clicked');
-      },
-    },
-    {
-      label: '💡  Add Skillsets',
-      handleClick: () => {
-        console.log('clicked');
-      },
-    },
-    {
-      label: '🛠️  Add Projects',
-      handleClick: () => {
-        console.log('clicked');
-      },
-    },
-    {
-      label: '🌐  Add Experience',
-      handleClick: () => {
-        console.log('clicked');
-      },
-    },
-    {
-      label: '🔗  Add CTA',
-      handleClick: () => {
-        console.log('clicked');
-      },
-    },
-  ];
+export const SectionList: React.FC<SectionListProp> = ({ isMenuList, handleClose }) => {
   const MenuSizeVariant: sizing = isMenuList ? 'sm' : 'md';
+  const sections = useSelector(isMenuList ? selectSections : selectFilteredActions);
+  const dispatch = useDispatch();
   return (
     <ElevatedContainer size={MenuSizeVariant}>
       <List size={MenuSizeVariant}>
-        {Sections.map(({ handleClick, label }, index) => {
+        {sections.map(({ label, type }, index) => {
+          const handleClick = () => {
+            dispatch(addSection(type));
+            handleClose();
+          };
           return (
             <ListItem
               key={`${index}_${label}`}

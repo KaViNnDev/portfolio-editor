@@ -5,8 +5,16 @@ import { NavFont } from '../typograpies';
 import { NAV_PREVIEW_LABEL, TITLE } from './strings';
 import { SectionMenuButton } from './SectionMenuButton';
 import { NavStack } from './NavStack';
+import { useDispatch } from '../../Store/helper';
+import { setPreviewMode } from '../../Store/modeSlice';
+import { useEditMode } from '../../Hooks/useEditMode';
 
 export const NavBar: React.FC = () => {
+  const dispatch = useDispatch();
+  const previewClickHandler = () => {
+    dispatch(setPreviewMode());
+  };
+  const isEditMode = useEditMode();
   return (
     <Box
       component={'nav'}
@@ -41,6 +49,8 @@ export const NavBar: React.FC = () => {
         <ButtonBase
           disableRipple
           disableTouchRipple
+          onClick={previewClickHandler}
+          disabled={!isEditMode}
         >
           <NavFont>{NAV_PREVIEW_LABEL}</NavFont>
         </ButtonBase>

@@ -1,10 +1,11 @@
 import { ArrowDropDown } from '@mui/icons-material';
-import { Box, ButtonBase, ClickAwayListener, Grow, Paper, Popper } from '@mui/material';
+import { ButtonBase } from '@mui/material';
 import React from 'react';
 import { NAV_SECTIONS_LABEL } from './strings';
 import { NavFont } from '../typograpies';
 import { Colors } from '../../Theme/colors';
 import { SectionList } from '../SectionList/SectionList';
+import { FloaterMenu } from '../FloaterMenu/FloaterMenu';
 
 export const SectionMenuButton: React.FC = () => {
   const [open, setOpen] = React.useState(false);
@@ -40,34 +41,17 @@ export const SectionMenuButton: React.FC = () => {
           htmlColor={Colors.white}
         />
       </ButtonBase>
-      <Popper
-        sx={{
-          zIndex: 1,
-        }}
+      <FloaterMenu
+        handleClose={handleClose}
         open={open}
-        anchorEl={anchorRef.current}
-        transition
-        disablePortal
-        placement="bottom-start"
+        anchorEl={anchorRef}
+        menuPlacement="bottom-start"
       >
-        {({ TransitionProps }) => (
-          <Grow {...TransitionProps}>
-            <Paper
-              sx={{
-                boxShadow: 'none',
-                mt: '25px',
-                background: 'transparent',
-              }}
-            >
-              <ClickAwayListener onClickAway={handleClose}>
-                <Box>
-                  <SectionList isMenuList />
-                </Box>
-              </ClickAwayListener>
-            </Paper>
-          </Grow>
-        )}
-      </Popper>
+        <SectionList
+          isMenuList
+          handleClose={() => setOpen(() => false)}
+        />
+      </FloaterMenu>
     </React.Fragment>
   );
 };

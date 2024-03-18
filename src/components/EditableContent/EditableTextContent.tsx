@@ -2,6 +2,7 @@ import { Box } from '@mui/material';
 import React from 'react';
 import { EditableTextNodeVariants } from '../../Theme/types';
 import { useEditableTextContent } from './hooks/useEditableTextContent';
+import { useEditMode } from '../../Hooks/useEditMode';
 interface EditableTextContentProps {
   isEditable: boolean;
   variant: EditableTextNodeVariants;
@@ -15,6 +16,7 @@ export const EditableTextContent: React.FC<EditableTextContentProps> = ({
   const { EditableSxHandler, WrapperSxHandler, changeHandler, elementRef } = useEditableTextContent(
     { variant, onChange }
   );
+  const isEditMode = useEditMode();
   return (
     <Box
       component={'div'}
@@ -27,7 +29,7 @@ export const EditableTextContent: React.FC<EditableTextContentProps> = ({
           ...EditableSxHandler(Text),
         })}
         component={'div'}
-        contentEditable={isEditable}
+        contentEditable={isEditable && isEditMode}
         ref={elementRef}
         onInput={changeHandler}
       ></Box>

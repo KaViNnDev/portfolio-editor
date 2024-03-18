@@ -3,6 +3,7 @@ import { EditableLinkVariants } from '../../Theme/types';
 import { useEditableLinkContent } from './hooks/useEditableLinkContent';
 import { Box } from '@mui/material';
 import { Icons } from '../../Icons/Icons';
+import { useEditMode } from '../../Hooks/useEditMode';
 
 interface EditableLinkContentProps {
   isEditable: boolean;
@@ -15,6 +16,7 @@ export const EditableLinkContent: React.FC<EditableLinkContentProps> = ({
 }) => {
   const { EditableSxHandler, WrapperSxHandler, changeHandler, elementRef, openLink } =
     useEditableLinkContent(variant);
+  const isEditMode = useEditMode();
   return (
     <Box
       component={'span'}
@@ -30,7 +32,7 @@ export const EditableLinkContent: React.FC<EditableLinkContentProps> = ({
         })}
         component={'span'}
         className={isEditable ? '' : 'link'}
-        contentEditable={isEditable}
+        contentEditable={isEditable && isEditMode}
         ref={elementRef}
         onInput={changeHandler}
       ></Box>
