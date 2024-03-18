@@ -21,4 +21,7 @@ export const Colors: colors = {
   electricBlue: '#0085FF',
   steelGray: '#999999',
   softGray: '#C5C5C5',
+  doveGray: '#828282',
+  skyBlue: '#0085FF',
+  lightSlateGray: '#E4E4E4',
 };

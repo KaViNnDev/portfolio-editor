@@ -9,7 +9,10 @@ export type IconVariants =
   | 'UnderLine'
   | 'ImagePlaceholder'
   | 'Link'
-  | 'NewTab';
+  | 'NewTab'
+  | 'Delete'
+  | 'Edit'
+  | 'Hamburger';
 
 export interface IconProp extends SvgProp {
   variant: IconVariants;

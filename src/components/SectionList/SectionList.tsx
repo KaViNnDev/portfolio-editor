@@ -15,6 +15,7 @@ import { AddCircleRounded } from '../../Icons/AddCircleRounded';
 import { sizing } from '../../Theme/types';
 import { useDispatch, useSelector } from '../../Store/helper';
 import { addSection, selectFilteredActions, selectSections } from '../../Store/sectionsSlice';
+import ScrollTo from 'react-scroll-into-view';
 
 interface MenuListSize {
   size: sizing;
@@ -68,20 +69,25 @@ export const SectionList: React.FC<SectionListProp> = ({ isMenuList, handleClose
             handleClose();
           };
           return (
-            <ListItem
-              key={`${index}_${label}`}
-              onClick={handleClick}
-              size={MenuSizeVariant}
+            <ScrollTo
+              selector={`#${type}`}
+              scrollOptions={{ block: 'center' }}
             >
-              {!isMenuList && (
-                <ListIcon>
-                  <AddCircleRounded />
-                </ListIcon>
-              )}
-              <ListItemText sx={{ margin: '0px' }}>
-                <BodyFont>{label}</BodyFont>
-              </ListItemText>
-            </ListItem>
+              <ListItem
+                key={`${index}_${label}`}
+                onClick={handleClick}
+                size={MenuSizeVariant}
+              >
+                {!isMenuList && (
+                  <ListIcon>
+                    <AddCircleRounded />
+                  </ListIcon>
+                )}
+                <ListItemText sx={{ margin: '0px' }}>
+                  <BodyFont>{label}</BodyFont>
+                </ListItemText>
+              </ListItem>
+            </ScrollTo>
           );
         })}
       </List>

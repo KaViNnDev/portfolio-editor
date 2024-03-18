@@ -1,10 +1,14 @@
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
-import { useState } from 'react';
+import { useEditMode } from '../../../Hooks/useEditMode';
 
-export const EditorModePlugin = (): null => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [isEditMode, _setIsEditMode] = useState<boolean>(true);
+interface EditorModePluginProps {
+  isEditable: boolean;
+}
+
+export const EditorModePlugin = ({ isEditable }: EditorModePluginProps): null => {
+  const isEditMode = useEditMode();
   const [editor] = useLexicalComposerContext();
-  editor.setEditable(isEditMode);
+  const canEdit = isEditable && isEditMode;
+  editor.setEditable(canEdit);
   return null;
 };

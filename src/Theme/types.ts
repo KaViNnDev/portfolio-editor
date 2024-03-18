@@ -1,4 +1,5 @@
 import { CSSProperties } from 'react';
+import { Sections } from '../Store/sectionsSlice';
 
 export interface colors {
   lightGrey: string;
@@ -21,6 +22,9 @@ export interface colors {
   electricBlue: string;
   steelGray: string;
   softGray: string;
+  doveGray: string;
+  skyBlue: string;
+  lightSlateGray: string;
 }
 
 export interface borderRadii {
@@ -88,3 +92,5 @@ export interface EditableTypographies {
   Text: EditableTextTypographies;
   Link: EditableLinkTypographies;
 }
+
+export type SectionHandlerBreakPoints = Record<Sections, string>;

@@ -28,3 +28,29 @@ export const PlaceholderFont = styled(Typography)`
     color: ${Colors.black};
   }
 `;
+
+export const PrimarySaveButtonFont = styled(Typography)`
+  && {
+    font-weight: 700;
+    font-size: 12.8px;
+    line-height: 15.49px;
+    color: ${Colors.white};
+  }
+`;
+
+export const CancelButtonFont = styled(Typography)`
+  && {
+    font-weight: 600;
+    font-size: 12.8px;
+    line-height: 15.49px;
+    color: ${Colors.black};
+  }
+`;
+
+export const AllSectionAddedFont = styled(Typography)`
+  && {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 24px;
+  }
+`;

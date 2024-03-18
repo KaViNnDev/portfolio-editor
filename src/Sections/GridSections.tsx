@@ -3,8 +3,12 @@ import { HeroSection } from './HeroSection';
 import { SiteTitle } from '../components/SiteTitle/SiteTitle';
 import { TitleSection } from './TitleSection';
 import { SectionAppender } from '../components/AddNewSection/SectionAppender';
+import { useSelector } from '../Store/helper';
+import { selectActiveSections } from '../Store/sectionsSlice';
+import { SectionHandler } from './SectionHandler';
 
 export const GridSections = () => {
+  const isAnySectionAvailable = useSelector(selectActiveSections).length > 0;
   return (
     <Grid
       container
@@ -20,6 +24,14 @@ export const GridSections = () => {
         item
         xs={12}
         md={4}
+        sx={{
+          position: {
+            md: 'sticky',
+          },
+          top: {
+            md: '0px',
+          },
+        }}
       >
         <HeroSection />
       </Grid>
@@ -33,6 +45,9 @@ export const GridSections = () => {
       <Grid
         item
         xs={12}
+        sx={{
+          visibility: isAnySectionAvailable ? 'hidden' : 'visible',
+        }}
       >
         <SectionAppender
           isInitialSection={true}
@@ -42,6 +57,18 @@ export const GridSections = () => {
             },
           }}
         />
+      </Grid>
+      <Grid
+        item
+        xs={12}
+        md={4}
+      ></Grid>
+      <Grid
+        item
+        xs={12}
+        md={8}
+      >
+        <SectionHandler />
       </Grid>
     </Grid>
   );

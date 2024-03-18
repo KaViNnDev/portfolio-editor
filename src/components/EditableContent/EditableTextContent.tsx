@@ -7,11 +7,13 @@ interface EditableTextContentProps {
   isEditable: boolean;
   variant: EditableTextNodeVariants;
   onChange?: (val: string) => void;
+  value?: string;
 }
 export const EditableTextContent: React.FC<EditableTextContentProps> = ({
   isEditable,
   variant,
   onChange,
+  value,
 }) => {
   const { EditableSxHandler, WrapperSxHandler, changeHandler, elementRef } = useEditableTextContent(
     { variant, onChange }
@@ -32,7 +34,9 @@ export const EditableTextContent: React.FC<EditableTextContentProps> = ({
         contentEditable={isEditable && isEditMode}
         ref={elementRef}
         onInput={changeHandler}
-      ></Box>
+      >
+        {value}
+      </Box>
     </Box>
   );
 };

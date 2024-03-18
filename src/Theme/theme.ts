@@ -1,10 +1,9 @@
 import { createTheme } from '@mui/material/styles';
 import { Colors } from './colors';
 import {
-  EditableLinkTypographies,
-  EditableTextTypographies,
   EditableTypographies,
   ImageUploaderWidth,
+  SectionHandlerBreakPoints,
   SectionsListWidth,
   borderRadii,
   colors,
@@ -16,10 +15,8 @@ declare module '@mui/material/styles' {
     borderRadii: borderRadii;
     MenuListBreakPoint: SectionsListWidth;
     ImageUploaderBreakPoints: ImageUploaderWidth;
-    EditableTypographies: {
-      Text: EditableTextTypographies;
-      Link: EditableLinkTypographies;
-    };
+    EditableTypographies: EditableTypographies;
+    sectionHandlerBreakPoint: SectionHandlerBreakPoints;
   }
   // allow configuration using `createTheme`
   interface ThemeOptions {
@@ -28,6 +25,7 @@ declare module '@mui/material/styles' {
     MenuListBreakPoint: SectionsListWidth;
     ImageUploaderBreakPoints: ImageUploaderWidth;
     EditableTypographies: EditableTypographies;
+    sectionHandlerBreakPoint: SectionHandlerBreakPoints;
   }
 }
 
@@ -296,5 +294,13 @@ export const theme = createTheme({
         },
       },
     },
+  },
+  sectionHandlerBreakPoint: {
+    aboutYou: '428px',
+    skillSet: '622px',
+    projects: '461px',
+    experience: '633px',
+    blogsAndResources: '450px',
+    letsConnect: '295px',
   },
 });

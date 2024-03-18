@@ -4,9 +4,10 @@ import { CLICK_TO_ADD_SECTION_LABLE } from './strings';
 import { AppenderInnerFont } from './AppenderInnerFont';
 import { FloaterMenu } from '../FloaterMenu/FloaterMenu';
 import { SectionList } from '../SectionList/SectionList';
+import { useEditMode } from '../../Hooks/useEditMode';
 
 interface SectionAppenderProps {
-  isInitialSection: boolean;
+  isInitialSection?: boolean;
   wrapperStyle?: SxProps;
 }
 
@@ -16,6 +17,8 @@ export const SectionAppender: React.FC<SectionAppenderProps> = ({
 }) => {
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef<HTMLButtonElement>(null);
+
+  const isEditMode = useEditMode();
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -28,7 +31,7 @@ export const SectionAppender: React.FC<SectionAppenderProps> = ({
     setOpen(false);
   };
   return (
-    <Box sx={{ ...(!isInitialSection ? { px: '76px' } : {}), ...wrapperStyle }}>
+    <Box sx={{ ...(!isInitialSection ? { px: '76px', paddingTop: '45px' } : {}), ...wrapperStyle }}>
       <ButtonBase
         onClick={handleToggle}
         sx={({ colors, borderRadii }) => ({
@@ -41,6 +44,7 @@ export const SectionAppender: React.FC<SectionAppenderProps> = ({
           boxSizing: 'border-box',
         })}
         ref={anchorRef}
+        disabled={!isEditMode}
       >
         <AppenderInnerFont
           label={CLICK_TO_ADD_SECTION_LABLE}

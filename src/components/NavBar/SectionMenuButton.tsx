@@ -6,10 +6,13 @@ import { NavFont } from '../typograpies';
 import { Colors } from '../../Theme/colors';
 import { SectionList } from '../SectionList/SectionList';
 import { FloaterMenu } from '../FloaterMenu/FloaterMenu';
+import { useEditMode } from '../../Hooks/useEditMode';
 
 export const SectionMenuButton: React.FC = () => {
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef<HTMLButtonElement>(null);
+
+  const isEditMode = useEditMode();
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -30,6 +33,7 @@ export const SectionMenuButton: React.FC = () => {
         onClick={handleToggle}
         ref={anchorRef}
         aria-label="Button group with a section list"
+        disabled={!isEditMode}
       >
         <NavFont>{NAV_SECTIONS_LABEL}</NavFont>
         <ArrowDropDown

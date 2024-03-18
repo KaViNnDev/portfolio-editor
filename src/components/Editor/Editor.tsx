@@ -11,7 +11,7 @@ import { FloatingMenuPlugin } from './Plugins/FloatingMenuPlugin';
 import { ListItemNode, ListNode } from '@lexical/list';
 import { HashtagNode } from '@lexical/hashtag';
 import { Placeholder } from './Placeholder';
-import { Box } from '@mui/material';
+import { Box, SxProps } from '@mui/material';
 import { EditorModePlugin } from './Plugins/EditorModePlugin';
 
 const theme: EditorThemeClasses = {
@@ -31,7 +31,17 @@ function onError(error: Error): void {
   console.error(error);
 }
 
-export const Editor = (): JSX.Element => {
+interface EditorProps {
+  wrapperStyle?: SxProps;
+  isEditable: boolean;
+  shouldAutoFocus?: boolean;
+}
+
+export const Editor: React.FC<EditorProps> = ({
+  wrapperStyle,
+  isEditable,
+  shouldAutoFocus,
+}): JSX.Element => {
   const initialConfig: InitialConfigType = {
     namespace: 'RichTextEditor(RTE)',
     theme,
@@ -47,6 +57,7 @@ export const Editor = (): JSX.Element => {
           outline: 'none',
           border: 'none',
         },
+        ...wrapperStyle,
       }}
     >
       <LexicalComposer initialConfig={initialConfig}>
@@ -55,11 +66,11 @@ export const Editor = (): JSX.Element => {
           placeholder={<Placeholder />}
           ErrorBoundary={LexicalErrorBoundary}
         />
-        <AutoFocusPlugin />
+        {shouldAutoFocus === true ? <AutoFocusPlugin /> : null}
         <ListPlugin />
         <FloatingMenuPlugin />
         <HashtagPlugin />
-        <EditorModePlugin />
+        <EditorModePlugin isEditable={isEditable} />
       </LexicalComposer>
     </Box>
   );

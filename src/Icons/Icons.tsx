@@ -1,5 +1,8 @@
 import { AddCircleRounded } from './AddCircleRounded';
 import { BoldIcon } from './BoldIcon';
+import { DeleteIcon } from './DeleteIcon';
+import { EditIcon } from './EditIcon';
+import { HamburgerIcon } from './HamburgerIcon';
 import { ImageIcon } from './ImageIcon';
 import { ItalicIcon } from './ItalicIcon';
 import { LinkIcon } from './LinkIcon';
@@ -28,6 +31,12 @@ const getElement = (variant: IconVariants) => {
       return LinkIcon;
     case 'NewTab':
       return NewtabIcon;
+    case 'Delete':
+      return DeleteIcon;
+    case 'Edit':
+      return EditIcon;
+    case 'Hamburger':
+      return HamburgerIcon;
   }
 };
 

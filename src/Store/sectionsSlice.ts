@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from './store';
 
-type Sections =
+export type Sections =
   | 'aboutYou'
   | 'skillSet'
   | 'projects'
@@ -72,9 +72,10 @@ export const sectionsSlice = createSlice({
       if (sectionValues !== undefined) state.activeSections.push(sectionValues);
     },
     removeSection: (state, action: PayloadAction<Sections>) => {
-      state.activeSections = state.activeSections.filter(
-        (section) => section.type === action.payload
+      const filteredSection = state.activeSections.filter(
+        (section) => section.type !== action.payload
       );
+      state.activeSections = filteredSection;
     },
   },
 });
@@ -83,7 +84,17 @@ export const { addSection, removeSection } = sectionsSlice.actions;
 
 export const selectSections = (state: RootState) => state.sections.sections;
 
+export const selectSection = (state: RootState, type: Sections) => {
+  return state.sections.sections.find((section) => section.type === type);
+};
+
 export const selectActiveSections = (state: RootState) => state.sections.activeSections;
+
+export const selectRecentActiveSections = (state: RootState) => {
+  const activeSections = state.sections.activeSections;
+  const activeSectionsLength = activeSections.length;
+  return activeSections[activeSectionsLength - 1];
+};
 
 export const selectFilteredActions = (state: RootState) => {
   const { activeSections, sections } = state.sections;
