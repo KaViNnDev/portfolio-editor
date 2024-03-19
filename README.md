@@ -1,6 +1,6 @@
 # Personal Portfolio Builder
 
-This the no code based Personal Portfolio builder, where you can add your necessary detais to build your portfolio.
+This is Personal Portfolio builder, where you can add your necessary detais to build your portfolio.
 
 ## Available Sections
 
@@ -34,6 +34,28 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
+
+### `npm run format:check`
+
+This will check whether all the files in the repo matches the
+formatting rules specified in **prettierrc** file
+
+### `npm run format:fix`
+
+This will check and fix the format issue in the repo
+
+### `npm run lint:check`
+
+This will run the Lintters and check for code lintters rules in the repo
+
+### `npm run lint:fix`
+
+This will run the Lintters and fix the fixable lintters code.
+
+### `npm run precommit`
+
+This command is used by **husky** to run the **precommit**
+check, which check and run possible fixes for formatters and lintters in the code base.
 
 ### `npm test`
 
