@@ -49,6 +49,7 @@ export const CardAppender: React.FC<CardAppenderProp> = ({ onClick, section }) =
       flex: 1,
       flexShrink: 0,
       padding: '41px 37px',
+      maxHeight: section === 'experience' ? '64px' : '',
     };
   }, [colors.lightGrey, colors.silver, section]);
   const getInnerTextVariant = useCallback((): AppenderInnerFontVariant => {

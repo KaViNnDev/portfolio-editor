@@ -25,6 +25,7 @@ export interface colors {
   doveGray: string;
   skyBlue: string;
   lightSlateGray: string;
+  midNightNavi: string;
 }
 
 export interface borderRadii {

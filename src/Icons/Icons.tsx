@@ -1,6 +1,7 @@
 import { AddCircleRounded } from './AddCircleRounded';
 import { BoldIcon } from './BoldIcon';
 import { DeleteIcon } from './DeleteIcon';
+import { EclipseIcon } from './EclipseIcon';
 import { EditIcon } from './EditIcon';
 import { HamburgerIcon } from './HamburgerIcon';
 import { ImageIcon } from './ImageIcon';
@@ -37,6 +38,8 @@ const getElement = (variant: IconVariants) => {
       return EditIcon;
     case 'Hamburger':
       return HamburgerIcon;
+    case 'Eclipse':
+      return EclipseIcon;
   }
 };
 

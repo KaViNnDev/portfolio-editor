@@ -4,7 +4,7 @@ import { useSelector } from '../Store/helper';
 import { AboutMeSection } from './AboutMeSection';
 import { EditSectionHandler } from '../components/EditSectionHandler/EditSectionHandler';
 import { BlogAndResourceSection } from './BlogAndResourceSection';
-import { ExperienceSection } from './ExperienceSection';
+import { ExperienceSection } from './ExperienceSection/ExperienceSection';
 import { LetsConnectSection } from './LetsConnectSection';
 import { ProjectsSection } from './ProjectsSection/ProjectsSection';
 import { SkillsetSection } from './SkillsetSection/SkillsetSection';

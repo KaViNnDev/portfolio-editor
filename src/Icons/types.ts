@@ -12,7 +12,8 @@ export type IconVariants =
   | 'NewTab'
   | 'Delete'
   | 'Edit'
-  | 'Hamburger';
+  | 'Hamburger'
+  | 'Eclipse';
 
 export interface IconProp extends SvgProp {
   variant: IconVariants;

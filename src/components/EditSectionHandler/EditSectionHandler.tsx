@@ -22,6 +22,10 @@ export const EditSectionHandler: React.FC<EditSectionHandlerProps> = ({
     <>
       <Box
         sx={({ colors, sectionHandlerBreakPoint }) => ({
+          display: {
+            xs: sectionType === 'experience' ? 'none' : '',
+            md: 'initial',
+          },
           '& .toolbar': {
             visibility: 'hidden',
           },
@@ -33,14 +37,20 @@ export const EditSectionHandler: React.FC<EditSectionHandlerProps> = ({
             display: 'flex',
             flexDirection: {
               xs: isEditable ? '' : 'column',
-              md: 'row',
+              md: 'column',
             },
           },
           '&:hover .toolbar': {
-            visibility: isEditMode ? 'visible' : 'hidden',
+            visibility: {
+              xs: 'hidden',
+              md: isEditMode ? 'visible' : 'hidden',
+            },
           },
           '&:hover .container': {
-            border: `1.2px solid ${isEditMode ? colors.doveGray : 'tansparent'}`,
+            border: {
+              xs: 'hidden',
+              md: `1.2px solid ${isEditMode ? colors.doveGray : 'tansparent'}`,
+            },
           },
         })}
       >

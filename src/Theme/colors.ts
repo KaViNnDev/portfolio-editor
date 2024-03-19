@@ -24,4 +24,5 @@ export const Colors: colors = {
   doveGray: '#828282',
   skyBlue: '#0085FF',
   lightSlateGray: '#E4E4E4',
+  midNightNavi: '#0C131D26',
 };

@@ -3,9 +3,16 @@ import { PropsWithChildren } from 'react';
 import { sectionProp } from '../Sections/types';
 import { useScrollBarStyles } from '../Hooks/useScrollBarStyles';
 
-interface CardsContainerProps extends PropsWithChildren, sectionProp, BoxProps {}
+interface CardsContainerProps extends PropsWithChildren, sectionProp, BoxProps {
+  direction?: 'row' | 'column';
+}
 
-export const CardsContainer: React.FC<CardsContainerProps> = ({ isEditable, children, style }) => {
+export const CardsContainer: React.FC<CardsContainerProps> = ({
+  isEditable,
+  children,
+  style,
+  direction,
+}) => {
   const scrollbarStyles = useScrollBarStyles();
   return (
     <Box
@@ -13,8 +20,8 @@ export const CardsContainer: React.FC<CardsContainerProps> = ({ isEditable, chil
         display: 'flex',
         minWidth: { md: '100%' },
         flexDirection: {
-          xs: isEditable ? 'row' : 'column',
-          md: 'row',
+          xs: direction ?? isEditable ? 'row' : 'column',
+          md: direction ?? 'row',
         },
         flex: 1,
         gap: {

@@ -8,6 +8,7 @@ import { useScrollBarStyles } from '../../../Hooks/useScrollBarStyles';
 interface useEditableTextContentProp {
   variant: EditableTextNodeVariants;
   onChange?: (val: string) => void;
+  value?: string;
 }
 
 interface UseEditableTextContent {
@@ -15,13 +16,17 @@ interface UseEditableTextContent {
   changeHandler: (_event: React.ChangeEvent<HTMLDivElement>) => void;
   WrapperSxHandler: (_props: EditableTextTypographies) => SxProps<Theme>;
   EditableSxHandler: (_props: EditableTextTypographies) => SxProps<Theme>;
+  content: string;
+  blurHandler: (_event: React.FocusEvent<HTMLDivElement, Element>) => void;
 }
 
 export const useEditableTextContent = ({
   variant,
   onChange,
+  value,
 }: useEditableTextContentProp): UseEditableTextContent => {
   const [isContentExceedsWidth, setIsContentExceedsWidth] = useState<boolean>(false);
+  const [content, setContent] = useState<string>(value ?? '');
   const contentElement = useRef<HTMLDivElement>(null);
   const scrollbarStyles = useScrollBarStyles();
 
@@ -37,15 +42,20 @@ export const useEditableTextContent = ({
   };
 
   const getHeight = (lineHeight?: string | number): string | undefined => {
-    const PADDING_VALUE = 8;
+    //Since given line-heign doesn't satisfies cap values of the font, adding best suited value.
+    const RANDOM_CAP_VALUE = 6;
     if (typeof lineHeight === 'number') {
-      return lineHeight + PADDING_VALUE + 'px';
+      return lineHeight + RANDOM_CAP_VALUE + 'px';
     }
     if (typeof lineHeight === 'string') {
       const lineHeightValue = lineHeight?.match(/(\d+)/)?.[0];
       if (typeof lineHeightValue === 'number' || lineHeightValue !== undefined)
-        return Number(lineHeightValue) + PADDING_VALUE + 'px';
+        return Number(lineHeightValue) + RANDOM_CAP_VALUE + 'px';
     }
+  };
+
+  const blurHandler = (event: React.FocusEvent<HTMLDivElement, Element>) => {
+    setContent(event.target.innerHTML);
   };
 
   const WrapperSxHandler = (typographyTheme: EditableTextTypographies): SxProps<Theme> => {
@@ -54,7 +64,7 @@ export const useEditableTextContent = ({
     return {
       width: '100%',
       overflowX: isContentExceedsWidth ? 'scroll' : 'hidden',
-      // overflowY: 'hidden',
+      overflowY: 'hidden',
       boxSizing: 'border-box',
       textWrap: 'nowrap',
       '& > div:empty:before': {
@@ -87,5 +97,7 @@ export const useEditableTextContent = ({
     EditableSxHandler,
     WrapperSxHandler,
     elementRef: contentElement,
+    blurHandler,
+    content,
   };
 };

@@ -1,4 +1,4 @@
-import { EditorThemeClasses } from 'lexical';
+import { EditorState, EditorThemeClasses } from 'lexical';
 
 import { InitialConfigType, LexicalComposer } from '@lexical/react/LexicalComposer';
 import { RichTextPlugin } from '@lexical/react/LexicalRichTextPlugin';
@@ -6,6 +6,7 @@ import { AutoFocusPlugin } from '@lexical/react/LexicalAutoFocusPlugin';
 import { ListPlugin } from '@lexical/react/LexicalListPlugin';
 import { HashtagPlugin } from '@lexical/react/LexicalHashtagPlugin';
 import { ContentEditable } from '@lexical/react/LexicalContentEditable';
+import { OnChangePlugin } from '@lexical/react/LexicalOnChangePlugin';
 import LexicalErrorBoundary from '@lexical/react/LexicalErrorBoundary';
 import { FloatingMenuPlugin } from './Plugins/FloatingMenuPlugin';
 import { ListItemNode, ListNode } from '@lexical/list';
@@ -35,12 +36,14 @@ interface EditorProps {
   wrapperStyle?: SxProps;
   isEditable: boolean;
   shouldAutoFocus?: boolean;
+  onChange?: (state: EditorState) => void;
 }
 
 export const Editor: React.FC<EditorProps> = ({
   wrapperStyle,
   isEditable,
   shouldAutoFocus,
+  onChange,
 }): JSX.Element => {
   const initialConfig: InitialConfigType = {
     namespace: 'RichTextEditor(RTE)',
@@ -70,6 +73,11 @@ export const Editor: React.FC<EditorProps> = ({
           ErrorBoundary={LexicalErrorBoundary}
         />
         {shouldAutoFocus === false ? null : <AutoFocusPlugin />}
+        <OnChangePlugin
+          onChange={(state) => {
+            if (onChange !== undefined) onChange(state);
+          }}
+        />
         <ListPlugin />
         <FloatingMenuPlugin />
         <HashtagPlugin />

@@ -62,6 +62,15 @@ export const theme = createTheme({
         }),
       },
     },
+    MuiCssBaseline: {
+      styleOverrides: {
+        '@global': {
+          '*': {
+            boxSizing: 'border-box',
+          },
+        },
+      },
+    },
   },
   colors: Colors,
   borderRadii: borderRadius,
