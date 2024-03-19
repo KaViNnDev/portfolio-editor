@@ -5,7 +5,7 @@ import { AboutMeSection } from './AboutMeSection';
 import { EditSectionHandler } from '../components/EditSectionHandler/EditSectionHandler';
 import { BlogAndResourceSection } from './BlogAndResourceSection/BlogAndResourceSection';
 import { ExperienceSection } from './ExperienceSection/ExperienceSection';
-import { LetsConnectSection } from './LetsConnectSection';
+import { LetsConnectSection } from './LetsConnectSection/LetsConnectSection';
 import { ProjectsSection } from './ProjectsSection/ProjectsSection';
 import { SkillsetSection } from './SkillsetSection/SkillsetSection';
 

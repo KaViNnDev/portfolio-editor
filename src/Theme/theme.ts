@@ -310,6 +310,6 @@ export const theme = createTheme({
     projects: '461px',
     experience: '633px',
     blogsAndResources: '450px',
-    letsConnect: '295px',
+    letsConnect: '',
   },
 });
