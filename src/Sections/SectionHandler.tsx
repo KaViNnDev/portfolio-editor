@@ -6,9 +6,8 @@ import { EditSectionHandler } from '../components/EditSectionHandler/EditSection
 import { BlogAndResourceSection } from './BlogAndResourceSection';
 import { ExperienceSection } from './ExperienceSection';
 import { LetsConnectSection } from './LetsConnectSection';
-import { ProjectsSection } from './ProjectsSection';
+import { ProjectsSection } from './ProjectsSection/ProjectsSection';
 import { SkillsetSection } from './SkillsetSection/SkillsetSection';
-import { Box } from '@mui/material';
 
 const getSection = (type: Sections) => {
   switch (type) {
@@ -37,18 +36,7 @@ export const SectionHandler = () => {
         return (
           <EditSectionHandler sectionType={section.type}>
             {(isEditable) => {
-              return (
-                <Box
-                  key={section.type}
-                  id={section.type}
-                  sx={{
-                    minHeight: '100%',
-                    minWidth: '100%',
-                  }}
-                >
-                  <Component isEditable={isEditable} />
-                </Box>
-              );
+              return <Component isEditable={isEditable} />;
             }}
           </EditSectionHandler>
         );

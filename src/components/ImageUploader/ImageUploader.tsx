@@ -6,9 +6,10 @@ import { useImageUploader } from './useImageUploader';
 
 interface ImageUploaderProps {
   variant: ImageUploadeVariants;
+  isEditable?: boolean;
 }
 
-export const ImageUploader: React.FC<ImageUploaderProps> = ({ variant }) => {
+export const ImageUploader: React.FC<ImageUploaderProps> = ({ variant, isEditable }) => {
   const formId = useId();
   const { handleUpload, image } = useImageUploader();
   return (
@@ -47,6 +48,7 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({ variant }) => {
           <ImagePlaceholder
             variant={variant}
             formId={formId}
+            isEditable={isEditable ?? true}
           />
         )}
       </Box>

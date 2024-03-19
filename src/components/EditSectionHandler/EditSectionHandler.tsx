@@ -55,6 +55,7 @@ export const EditSectionHandler: React.FC<EditSectionHandlerProps> = ({
             },
           }}
           className="container"
+          id={sectionType}
         >
           {children(isEditable)}
         </Box>

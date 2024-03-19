@@ -6,14 +6,19 @@ import { useEditMode } from '../../Hooks/useEditMode';
 interface ImagePlaceholderProps {
   variant: ImageUploadeVariants;
   formId: string;
+  isEditable: boolean;
 }
 
-export const ImagePlaceholder: React.FC<ImagePlaceholderProps> = ({ variant, formId }) => {
+export const ImagePlaceholder: React.FC<ImagePlaceholderProps> = ({
+  variant,
+  formId,
+  isEditable,
+}) => {
   const { ImageUploaderBreakPoints } = useTheme();
   const isEditMode = useEditMode();
   return (
     <label
-      htmlFor={isEditMode ? formId : undefined}
+      htmlFor={isEditMode && isEditable ? formId : undefined}
       style={{ width: '100%', height: '100%' }}
     >
       <Box

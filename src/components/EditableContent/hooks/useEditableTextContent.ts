@@ -35,13 +35,26 @@ export const useEditableTextContent = ({
     const isContentExceeds = scrollWidth > clientWidth;
     setIsContentExceedsWidth(isContentExceeds);
   };
+
+  const getHeight = (lineHeight?: string | number): string | undefined => {
+    const PADDING_VALUE = 8;
+    if (typeof lineHeight === 'number') {
+      return lineHeight + PADDING_VALUE + 'px';
+    }
+    if (typeof lineHeight === 'string') {
+      const lineHeightValue = lineHeight?.match(/(\d+)/)?.[0];
+      if (typeof lineHeightValue === 'number' || lineHeightValue !== undefined)
+        return Number(lineHeightValue) + PADDING_VALUE + 'px';
+    }
+  };
+
   const WrapperSxHandler = (typographyTheme: EditableTextTypographies): SxProps<Theme> => {
     const style = typographyTheme[variant].style;
     const colorKey = typographyTheme[variant].color.Placeholder;
     return {
       width: '100%',
       overflowX: isContentExceedsWidth ? 'scroll' : 'hidden',
-      overflowY: 'hidden',
+      // overflowY: 'hidden',
       boxSizing: 'border-box',
       textWrap: 'nowrap',
       '& > div:empty:before': {
@@ -56,6 +69,7 @@ export const useEditableTextContent = ({
         outline: 'none',
         border: 'none',
       },
+      height: getHeight(style.lineHeight),
       ...scrollbarStyles,
     };
   };

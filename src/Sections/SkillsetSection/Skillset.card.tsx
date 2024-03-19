@@ -7,20 +7,11 @@ import { sectionProp } from '../types';
 
 export const SkillsetCard: React.FC<sectionProp> = ({ isEditable }) => {
   return (
-    <CardWrapper
-      direction="column"
-      styles={{
-        gap: '23px',
-      }}
-    >
+    <CardWrapper direction="column">
       <Box
         sx={{
           display: 'flex',
           flexDirection: 'column',
-          minWidth: {
-            xs: '100%',
-            md: '359px',
-          },
           gap: '12px',
         }}
       >

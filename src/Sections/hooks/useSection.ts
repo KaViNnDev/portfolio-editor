@@ -1,11 +1,11 @@
 import { useState } from 'react';
 
-interface UseSkillsetSection {
+interface UseSection {
   cards: number;
   addNewCard: () => void;
 }
 
-export const useSkillsetSection = (): UseSkillsetSection => {
+export const useSection = (): UseSection => {
   const [cards, setCards] = useState(1);
   const addNewCard = () => {
     setCards((prevState) => prevState + 1);
