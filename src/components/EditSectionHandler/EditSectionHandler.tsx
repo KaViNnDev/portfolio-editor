@@ -28,8 +28,13 @@ export const EditSectionHandler: React.FC<EditSectionHandlerProps> = ({
           '& .container': {
             border: `1.2px solid transparent`,
             borderRadius: '16px',
-            minHeight: sectionHandlerBreakPoint[sectionType],
+            minHeight: isEditable ? sectionHandlerBreakPoint[sectionType] : undefined,
             textWrap: 'wrap',
+            display: 'flex',
+            flexDirection: {
+              xs: isEditable ? '' : 'column',
+              md: 'row',
+            },
           },
           '&:hover .toolbar': {
             visibility: isEditMode ? 'visible' : 'hidden',

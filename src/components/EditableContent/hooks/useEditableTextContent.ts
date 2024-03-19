@@ -3,6 +3,7 @@ import React, { useRef, useState } from 'react';
 import { EDITABLE_TEXT_NODE_PLACEHOLDERS } from '../strings';
 import { EditableTextNodeVariants, EditableTextTypographies } from '../../../Theme/types';
 import { Colors } from '../../../Theme/colors';
+import { useScrollBarStyles } from '../../../Hooks/useScrollBarStyles';
 
 interface useEditableTextContentProp {
   variant: EditableTextNodeVariants;
@@ -22,6 +23,7 @@ export const useEditableTextContent = ({
 }: useEditableTextContentProp): UseEditableTextContent => {
   const [isContentExceedsWidth, setIsContentExceedsWidth] = useState<boolean>(false);
   const contentElement = useRef<HTMLDivElement>(null);
+  const scrollbarStyles = useScrollBarStyles();
 
   //eslint-disable-next-line
   const changeHandler = (_event: React.FormEvent<HTMLDivElement>): void => {
@@ -54,6 +56,7 @@ export const useEditableTextContent = ({
         outline: 'none',
         border: 'none',
       },
+      ...scrollbarStyles,
     };
   };
   const EditableSxHandler = (typographyTheme: EditableTextTypographies): SxProps<Theme> => {

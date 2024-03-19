@@ -19,6 +19,7 @@ export const AboutMeSection: React.FC<sectionProp> = ({ isEditable }) => {
           marginTop: '45px',
         }}
         isEditable={isEditable}
+        shouldAutoFocus={true}
       />
     </>
   );

@@ -7,7 +7,7 @@ import { BlogAndResourceSection } from './BlogAndResourceSection';
 import { ExperienceSection } from './ExperienceSection';
 import { LetsConnectSection } from './LetsConnectSection';
 import { ProjectsSection } from './ProjectsSection';
-import { SkillsetSection } from './SkillsetSection';
+import { SkillsetSection } from './SkillsetSection/SkillsetSection';
 import { Box } from '@mui/material';
 
 const getSection = (type: Sections) => {
@@ -41,6 +41,10 @@ export const SectionHandler = () => {
                 <Box
                   key={section.type}
                   id={section.type}
+                  sx={{
+                    minHeight: '100%',
+                    minWidth: '100%',
+                  }}
                 >
                   <Component isEditable={isEditable} />
                 </Box>

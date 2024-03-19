@@ -57,6 +57,9 @@ export const Editor: React.FC<EditorProps> = ({
           outline: 'none',
           border: 'none',
         },
+        '& p': {
+          margin: '0px',
+        },
         ...wrapperStyle,
       }}
     >
@@ -66,7 +69,7 @@ export const Editor: React.FC<EditorProps> = ({
           placeholder={<Placeholder />}
           ErrorBoundary={LexicalErrorBoundary}
         />
-        {shouldAutoFocus === true ? <AutoFocusPlugin /> : null}
+        {shouldAutoFocus === false ? null : <AutoFocusPlugin />}
         <ListPlugin />
         <FloatingMenuPlugin />
         <HashtagPlugin />

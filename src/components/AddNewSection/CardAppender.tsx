@@ -22,28 +22,14 @@ const getBroderValue = (section: CardSections): string => {
   }
 };
 
-const getSkeletonPaddingY = (section: CardSections): string => {
-  switch (section) {
-    case 'skillset':
-      return '244px';
-    case 'project':
-      return '88px';
-    case 'experience':
-      return '20px';
-    case 'blog':
-      return '83px';
-  }
-};
-
-const getSkeletonPaddingX = (section: CardSections): string => {
+const getWidth = (section: CardSections): string => {
   switch (section) {
     case 'skillset':
     case 'project':
-      return '133px';
-    case 'experience':
-      return '331px';
     case 'blog':
-      return '150px';
+      return '359px';
+    case 'experience':
+      return '100%';
   }
 };
 
@@ -51,14 +37,18 @@ export const CardAppender: React.FC<CardAppenderProp> = ({ onClick, section }) =
   const { colors } = useTheme();
   const getStyles = useCallback((): SxProps => {
     const borderRadius = getBroderValue(section);
-    const py = getSkeletonPaddingY(section);
-    const px = getSkeletonPaddingX(section);
+    const width = getWidth(section);
     return {
       backgroundColor: colors.lightGrey,
       border: `1px solid ${colors.silver}`,
       borderRadius,
-      py,
-      px,
+      minWidth: {
+        xs: '100%',
+        md: width,
+      },
+      flex: 1,
+      flexShrink: 0,
+      padding: '41px 37px',
     };
   }, [colors.lightGrey, colors.silver, section]);
   const getInnerTextVariant = useCallback((): AppenderInnerFontVariant => {

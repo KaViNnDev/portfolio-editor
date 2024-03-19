@@ -9,9 +9,10 @@ export const Placeholder: React.FC = () => {
       sx={({ colors }) => ({
         position: 'absolute',
         top: '0px',
-        zIndex: '-1',
         color: colors.black,
         opacity: 1,
+        userSelect: 'none',
+        display: 'inline',
       })}
     >
       <PlaceholderFont>{EDITOR_PLACEHOLDER}</PlaceholderFont>

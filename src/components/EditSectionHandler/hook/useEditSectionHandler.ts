@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   Sections,
   selectActiveSections,
@@ -32,8 +32,15 @@ export const useEditSectionHandler = ({
   const [canEdit, setCanEdit] = useState<boolean>(true);
   const isEditable = isEditMode && canEdit;
   const onClickHandler = () => {
-    setCanEdit(false);
+    setCanEdit(!canEdit);
   };
+
+  useEffect(() => {
+    if (!isRecentActiveSection) {
+      setCanEdit(false);
+    }
+  }, [isRecentActiveSection]);
+
   return {
     isAllSectionAppended,
     isEditable,
