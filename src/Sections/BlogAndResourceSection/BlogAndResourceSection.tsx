@@ -47,7 +47,10 @@ export const BlogAndResourceSection: React.FC<sectionProp> = ({ isEditable }) =>
           variant={'SectionSubText'}
         />
       </Box>
-      <CardsContainer isEditable={isEditable}>
+      <CardsContainer
+        isEditable={isEditable}
+        sectionType="blogsAndResources"
+      >
         {Array(cards)
           .fill(0)
           .map(() => (

@@ -8,7 +8,10 @@ import { CardsContainer } from '../../components/CardsContainer';
 export const SkillsetSection: React.FC<sectionProp> = ({ isEditable }) => {
   const { addNewCard, cards } = useSection();
   return (
-    <CardsContainer isEditable={isEditable}>
+    <CardsContainer
+      isEditable={isEditable}
+      sectionType="skillSet"
+    >
       {Array(cards)
         .fill(0)
         .map(() => (

@@ -54,6 +54,7 @@ export const ExperienceSection: React.FC<sectionProp> = ({ isEditable }) => {
       <CardsContainer
         isEditable={isEditable}
         direction="column"
+        sectionType="experience"
       >
         {Array(cards)
           .fill(0)

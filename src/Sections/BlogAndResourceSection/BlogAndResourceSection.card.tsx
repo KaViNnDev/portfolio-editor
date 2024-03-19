@@ -7,7 +7,10 @@ import { sectionProp } from '../types';
 
 export const BlogAndResourceSectionCard: React.FC<sectionProp> = ({ isEditable }) => {
   return (
-    <CardWrapper direction="column">
+    <CardWrapper
+      direction="column"
+      isEditable={isEditable}
+    >
       <ImageUploader
         variant="md"
         isEditable={isEditable}

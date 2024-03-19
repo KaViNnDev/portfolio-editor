@@ -11,6 +11,7 @@ export const ExperienceSectionCard: React.FC<sectionProp> = ({ isEditable }) => 
     <CardWrapper
       direction="column"
       style={{ minWidth: '100%' }}
+      isEditable={isEditable}
     >
       <Box
         sx={{

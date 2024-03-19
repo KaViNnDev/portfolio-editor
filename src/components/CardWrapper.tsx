@@ -4,12 +4,14 @@ import React, { CSSProperties, PropsWithChildren } from 'react';
 interface CardWrapperProps extends PropsWithChildren, BoxProps {
   direction?: 'row' | 'column';
   styles?: CSSProperties;
+  isEditable: boolean;
 }
 
 export const CardWrapper: React.FC<CardWrapperProps> = ({
   children,
   direction,
   styles,
+  isEditable,
   ...restProps
 }) => {
   return (
@@ -23,10 +25,12 @@ export const CardWrapper: React.FC<CardWrapperProps> = ({
         borderRadius: '25px',
         padding: '41px 37px',
         flexShrink: 0,
-        minWidth: {
-          xs: '100%',
-          md: '359px',
-        },
+        minWidth: isEditable
+          ? {
+              xs: '100%',
+              md: '359px',
+            }
+          : undefined,
         maxWidth: '359px',
         boxSizing: 'border-box',
         gap: '23px',
