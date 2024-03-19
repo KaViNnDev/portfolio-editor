@@ -31,7 +31,6 @@ export const CardWrapper: React.FC<CardWrapperProps> = ({
               md: '359px',
             }
           : undefined,
-        maxWidth: '359px',
         boxSizing: 'border-box',
         gap: '23px',
         ...styles,
