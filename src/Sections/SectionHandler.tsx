@@ -3,7 +3,7 @@ import { Sections, selectActiveSections } from '../Store/sectionsSlice';
 import { useSelector } from '../Store/helper';
 import { AboutMeSection } from './AboutMeSection';
 import { EditSectionHandler } from '../components/EditSectionHandler/EditSectionHandler';
-import { BlogAndResourceSection } from './BlogAndResourceSection';
+import { BlogAndResourceSection } from './BlogAndResourceSection/BlogAndResourceSection';
 import { ExperienceSection } from './ExperienceSection/ExperienceSection';
 import { LetsConnectSection } from './LetsConnectSection';
 import { ProjectsSection } from './ProjectsSection/ProjectsSection';
