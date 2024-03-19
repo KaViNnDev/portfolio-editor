@@ -1,5 +1,5 @@
 import './App.css';
-import { Container, ThemeProvider } from '@mui/material';
+import { Box, ThemeProvider } from '@mui/material';
 import { theme } from './Theme/theme';
 import { NavBar } from './components/NavBar/NavBar';
 import { GridSections } from './Sections/GridSections';
@@ -11,9 +11,16 @@ function App(): JSX.Element {
     <ThemeProvider theme={theme}>
       <Provider store={store}>
         <NavBar />
-        <Container sx={{ padding: '47px 0px' }}>
+        <Box
+          sx={{
+            padding: {
+              xs: '50px 27px 50px 25px',
+              md: '50px 100px',
+            },
+          }}
+        >
           <GridSections />
-        </Container>
+        </Box>
       </Provider>
     </ThemeProvider>
   );

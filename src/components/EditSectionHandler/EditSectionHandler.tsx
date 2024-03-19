@@ -71,14 +71,16 @@ export const EditSectionHandler: React.FC<EditSectionHandlerProps> = ({
         </Box>
       </Box>
       {isAllSectionAppended ? (
-        <Box
-          sx={{
-            py: '24px',
-            textAlign: 'center',
-          }}
-        >
-          <AllSectionAddedFont>{ALL_SECTION_ADDED_LABEL}</AllSectionAddedFont>
-        </Box>
+        isEditMode ? (
+          <Box
+            sx={{
+              py: '24px',
+              textAlign: 'center',
+            }}
+          >
+            <AllSectionAddedFont>{ALL_SECTION_ADDED_LABEL}</AllSectionAddedFont>
+          </Box>
+        ) : null
       ) : isRecentActiveSection ? (
         <SectionAppender
           isInitialSection={false}

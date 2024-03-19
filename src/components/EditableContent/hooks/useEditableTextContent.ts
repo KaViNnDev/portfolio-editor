@@ -61,12 +61,14 @@ export const useEditableTextContent = ({
   const WrapperSxHandler = (typographyTheme: EditableTextTypographies): SxProps<Theme> => {
     const style = typographyTheme[variant].style;
     const colorKey = typographyTheme[variant].color.Placeholder;
+    const canWrapText =
+      variant === 'SectionSubText' || variant === 'SkillSetDescription' || variant === 'BlogTitle';
     return {
       width: '100%',
       overflowX: isContentExceedsWidth ? 'scroll' : 'hidden',
-      overflowY: 'hidden',
+      overflowY: canWrapText ? 'hidden' : undefined,
       boxSizing: 'border-box',
-      textWrap: 'nowrap',
+      textWrap: canWrapText ? 'wrap' : 'nowrap',
       '& > div:empty:before': {
         content: `"${EDITABLE_TEXT_NODE_PLACEHOLDERS[variant]}"`,
         ...style,
@@ -79,7 +81,7 @@ export const useEditableTextContent = ({
         outline: 'none',
         border: 'none',
       },
-      height: getHeight(style.lineHeight),
+      minHeight: getHeight(style.lineHeight),
       ...scrollbarStyles,
     };
   };

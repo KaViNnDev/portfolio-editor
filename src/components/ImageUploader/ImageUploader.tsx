@@ -36,9 +36,13 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({ variant, isEditabl
           border: `1px slid ${colors.silverGray}`,
           display: 'flex',
           overflow: 'hidden',
-          borderWidth: '1px',
-          borderStyle: 'dashed',
-          borderColor: colors.silverGray,
+          ...(image === null
+            ? {
+                borderWidth: '1px',
+                borderStyle: 'dashed',
+                borderColor: colors.silverGray,
+              }
+            : {}),
         })}
       >
         {image !== null ? (

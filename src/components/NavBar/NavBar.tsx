@@ -30,19 +30,36 @@ export const NavBar: React.FC = () => {
     >
       <NavStack
         sx={{
-          paddingLeft: '35px',
-          paddingRight: '63px',
+          paddingLeft: {
+            xs: '10px',
+            md: '35px',
+          },
+          paddingRight: {
+            xs: '10px',
+            md: '63px',
+          },
         }}
       >
-        <NavStack gap={'64px'}>
-          <NavStack gap={'12px'}>
+        <NavStack
+          gap={{
+            xs: '20px',
+            md: '64px',
+          }}
+        >
+          <NavStack gap={'8px'}>
             <img
               src={Logo}
               alt="Logo"
               width={'30px'}
               height={'13.64px'}
             />
-            <NavFont>{TITLE}</NavFont>
+            <NavFont
+              sx={{
+                textWrap: 'nowrap',
+              }}
+            >
+              {TITLE}
+            </NavFont>
           </NavStack>
           <SectionMenuButton />
         </NavStack>
