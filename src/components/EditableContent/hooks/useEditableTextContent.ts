@@ -62,7 +62,10 @@ export const useEditableTextContent = ({
     const style = typographyTheme[variant].style;
     const colorKey = typographyTheme[variant].color.Placeholder;
     const canWrapText =
-      variant === 'SectionSubText' || variant === 'SkillSetDescription' || variant === 'BlogTitle';
+      variant === 'SectionSubText' ||
+      variant === 'SkillSetDescription' ||
+      variant === 'BlogTitle' ||
+      variant === 'Title';
     return {
       width: '100%',
       overflowX: isContentExceedsWidth ? 'scroll' : 'hidden',

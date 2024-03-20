@@ -11,11 +11,11 @@ import {
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { BodyFont } from '../typograpies';
-import { AddCircleRounded } from '../../Icons/AddCircleRounded';
 import { sizing } from '../../Theme/types';
 import { useDispatch, useSelector } from '../../Store/helper';
 import { addSection, selectFilteredActions, selectSections } from '../../Store/sectionsSlice';
 import ScrollTo from 'react-scroll-into-view';
+import { Icons } from '../../Icons/Icons';
 
 interface MenuListSize {
   size: sizing;
@@ -80,7 +80,7 @@ export const SectionList: React.FC<SectionListProp> = ({ isMenuList, handleClose
               >
                 {!isMenuList && (
                   <ListIcon>
-                    <AddCircleRounded />
+                    <Icons variant="AddCircleRounded" />
                   </ListIcon>
                 )}
                 <ListItemText sx={{ margin: '0px' }}>

@@ -11,7 +11,7 @@ interface ImageUploaderProps {
 
 export const ImageUploader: React.FC<ImageUploaderProps> = ({ variant, isEditable }) => {
   const formId = useId();
-  const { handleUpload, image } = useImageUploader();
+  const { handleUpload, image } = useImageUploader({ shouldUpdateFavicon: variant === 'sm' });
   return (
     <>
       {image === null && (

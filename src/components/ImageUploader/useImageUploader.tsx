@@ -5,8 +5,25 @@ interface ImageUploader {
   handleUpload: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const useImageUploader = (): ImageUploader => {
+interface UseImageUploader {
+  shouldUpdateFavicon: boolean;
+}
+
+export const useImageUploader = ({ shouldUpdateFavicon }: UseImageUploader): ImageUploader => {
   const [image, setImage] = useState<string | ArrayBuffer | null>(null);
+
+  const updateFavicon = useCallback((image: File) => {
+    // Upload the image here and get the URL
+    const imageUrl = URL.createObjectURL(image);
+
+    // Set the URL as favicon
+    const favicon: HTMLLinkElement | null =
+      document.querySelector("link[rel*='icon']") ?? document.createElement('link');
+    favicon.rel = 'icon';
+    favicon.href = imageUrl;
+    document.head.appendChild(favicon);
+  }, []);
+
   const handleUpload = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>): void => {
       if (image !== null) return;
@@ -17,9 +34,12 @@ export const useImageUploader = (): ImageUploader => {
         reader.onload = () => {
           setImage(reader.result);
         };
+        if (shouldUpdateFavicon) {
+          updateFavicon(file);
+        }
       }
     },
-    [image]
+    [image, shouldUpdateFavicon, updateFavicon]
   );
 
   return {
